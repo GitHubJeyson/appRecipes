@@ -14,8 +14,8 @@ export const recipeSchema = z.object({
   imageUrl: z.string({
     required_error: "La Url es requerida",
   })
-  .url("La URL de la imagen debe ser válida")
-  .min(1, { message: "La Url no puede estar vacía" }),
+  .min(1, { message: "La Url no puede estar vacía" })
+  .url("La URL de la imagen debe ser válida"),
 
   ingredients: z.array(z.object({
     name: z.string().min(1, "El nombre del ingrediente es obligatorio"),
@@ -29,7 +29,9 @@ export const recipeSchema = z.object({
   .min(1, { message: "Las instrucciónes no pueden estar vacías" }),
 
   cookingtime: z.object({
-    hour: z.number().int().min(0, { message: "Las horas no pueden ser negativas" }),
+    hour: z.number().int()
+    .min(0, { message: "Las horas no pueden ser negativas" })
+    .default(0),
     minute: z.number().int()
     .min(0, { message: "Los minutos no pueden ser negativos" })
     .default(0),

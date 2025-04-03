@@ -5,6 +5,9 @@ import cors from 'cors'
 
 import authRoutes from './routes/auth.routes.js'
 import recipesRoutes from './routes/recipes.routes.js'
+import commentsRoutes from './routes/comments.routes.js'
+import contentRoutes from './routes/content.routes.js'
+import categoryRoutes from './routes/category.routes.js'
 import { FRONTEND_URL } from "./config.js";
 
 const app = express();
@@ -20,5 +23,8 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
 app.use("/api", recipesRoutes);
+app.use("/api", commentsRoutes);
+app.use("/api", contentRoutes);
+app.use("/api", categoryRoutes);
 
 export default app;

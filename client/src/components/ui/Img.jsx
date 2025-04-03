@@ -4,6 +4,6 @@ export const Img = forwardRef((props, ref) => (
     <img
     {...props}
     ref={ref}
-    className="w-full h-60 object-cover rounded-xl shadow-lg mb-6 border-2 border-zinc-900 opacity-80"
+    className="w-full h-[300px] text-xs object-cover rounded-xl mb-4 border-2 border-zinc-900 opacity-80"
     />
 ));

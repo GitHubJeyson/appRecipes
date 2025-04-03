@@ -27,7 +27,16 @@ const recipeSchema = new mongoose.Schema({
             minute: { type: Number, default: 0 },
         },
         required: true,
-    },    
+    },
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Category",
+        default: null,
+    },
+    tags: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Tag",
+    }],
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",

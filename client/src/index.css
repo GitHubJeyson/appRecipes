@@ -10,3 +10,11 @@ body {
 .content-container {
   height: calc(100vh - theme("spacing.20"));
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}

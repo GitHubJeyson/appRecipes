@@ -1,12 +1,13 @@
 import AuthContext from '../context/authContext.js'
 import { useEffect } from "react";
 import { useState } from "react";
-import { loginRequest, registerRequest, verifyTokenRequest } from "./apiAuth.js";
+import { loginRequest, registerRequest, verifyTokenRequest, getUsersRequest, deleteUserRequest } from "./apiAuth.js";
 import Cookies from "js-cookie";
 
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [users, setUsers] = useState([]);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [errors, setErrors] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -56,7 +57,6 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
       const checkLogin = async () => {
         const cookies = Cookies.get();
-        //console.log(cookies)
         if (!cookies.token) {
           setIsAuthenticated(false);
           setLoading(false);
@@ -65,7 +65,6 @@ export const AuthProvider = ({ children }) => {
   
         try {
           const res = await verifyTokenRequest(cookies.token);
-          //console.log(res)
           if (!res.data) return setIsAuthenticated(false);
           setIsAuthenticated(true);
           setUser(res.data);
@@ -77,19 +76,40 @@ export const AuthProvider = ({ children }) => {
       };
       checkLogin();
     }, []);
-  
+
+    const getUsers = async () => {
+      try {
+        const res = await getUsersRequest();
+        setUsers(res.data);
+      } catch (error) {
+        console.log(error)
+      }
+    };
+    
+    const deleteUser = async (userId) => {
+      try {
+        const res = await deleteUserRequest(userId);
+        if (res.status === 200) return setUsers(users.filter((user) => user._id !== userId));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    
+    
     return (
       <AuthContext.Provider
         value={{
           user,
+          users,
+          getUsers,
+          deleteUser,
           signup,
           signin,
           logout,
           isAuthenticated,
           errors,
           loading,
-        }}
-      >
+        }}>
         {children}
       </AuthContext.Provider>
     );

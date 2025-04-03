@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon src/index.js --ignore client",
-    "start": "cross-env NODE_ENV=production node src/index.js"
+    "start": "cross-env NODE_ENV=production node src/index.js",
+    "test-backend": "vitest --ui --config ./src/vitest.config.js"
   },
   "keywords": [],
   "author": "",
@@ -22,8 +23,11 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
+    "@vitest/ui": "^3.0.5",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.7",
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "supertest": "^7.0.0",
+    "vitest": "^3.0.5"
   }
 }
