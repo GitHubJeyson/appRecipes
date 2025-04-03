@@ -24,7 +24,7 @@ function LoginPage() {
   }, [isAuthenticated]);
 
   return (
-    <div className="h-[calc(95vh-100px)] flex items-center justify-center">
+    <div className="h-[calc(95vh-100px)] flex items-center justify-center w-full lg:w-1/2 2xl:w-1/4 min-w-[300px]">
       <Card>
         {loginErrors.map((error, i) => (
           <Message message={error} key={i} />
@@ -34,21 +34,25 @@ function LoginPage() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <Label htmlFor="username">Nombre de usuario:</Label>
           <Input type="text" name="username" placeholder="Escribe tu usuario" autoComplete="username"
-            {...register("username", { required: true })}
+            {...register("username")}
           />
-          <p>{errors.username?.message}</p>
+          {errors.username?.message && (
+            <h1 className="text-red-500">{errors.username?.message}</h1>
+          )}
 
           <Label htmlFor="password">Contraseña:</Label>
           <Input type="password" name="password" placeholder="********" autoComplete="new-password"
             {...register("password")}
           />
-          <p>{errors.password?.message}</p>
+          {errors.password?.message && (
+            <h1 className="text-red-500">{errors.password?.message}</h1>
+          )}
 
           <Button>Enviar</Button>
         </form>
-
         <p className="text-zinc-300 text-xs">
-        ¿No tienes una cuenta? <Link to="/register" className="text-sky-500">inscribirse</Link>
+          ¿No tienes una cuenta?
+          <Link to="/register" className="text-blue-500"> Inscribirse</Link>
         </p>
       </Card>
     </div>

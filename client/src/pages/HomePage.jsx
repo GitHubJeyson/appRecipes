@@ -74,7 +74,7 @@ function HomePage() {
   if (!content) return <p>Cargando contenido...</p>;
 
   return (
-    <>
+    <div className="flex flex-col items-center min-h-[calc(95vh-100px)]">
       <div className="flex flex-col items-center mb-2">
         <header className="bg-zinc-800 rounded-md shadow-lg p-2">
           <h1 className="text-xl mb-2 font-bold text-center">{content.title}</h1>
@@ -83,8 +83,8 @@ function HomePage() {
           </p>
         </header>
       </div>
-      {filteredRecipes.length > 0 && (
-      <div className="flex justify-center p-2">
+      {recipes.length > 0 && (
+      <div className="flex w-full justify-center p-2">
         <input
           type="text"
           value={searchTerm}
@@ -94,7 +94,7 @@ function HomePage() {
         />
       </div>
       )}
-      {filteredRecipes.length > 0 && (
+      {recipes.length > 0 && (
       <div className="flex justify-between items-center p-2 mb-6 bg-zinc-800 rounded-lg shadow-sm z-10">
         <div className="flex items-center space-x-4">
           <div className="relative">
@@ -148,7 +148,7 @@ function HomePage() {
             </h1>
           </div>
         ) : (
-          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredRecipes.map((recipe) => (
               <RecipeCard
                 recipe={recipe}
@@ -162,7 +162,7 @@ function HomePage() {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
 

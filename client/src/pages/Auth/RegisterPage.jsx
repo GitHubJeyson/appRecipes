@@ -30,15 +30,16 @@ function Register() {
   }, [isAuthenticated]);
 
   return (
-    <div className="h-[calc(95vh-100px)] flex items-center justify-center">
+    <div className="h-[calc(95vh-100px)] flex items-center justify-center w-full lg:w-1/2 2xl:w-1/4 min-w-[300px]">
       <Card>
         {registerErrors.map((error, i) => (
           <Message message={error} key={i} />
         ))}
         <h1 className="text-xl text-zinc-300 font-bold py-2">Regístrate</h1>
+        
         <form onSubmit={handleSubmit(onSubmit)}>
           <Label htmlFor="username">Nombre de Usuario:</Label>
-          <Input type="text" name="username" placeholder="Escribe tu nombre"
+          <Input type="text" name="username" placeholder="Escribe tu nombre" autoComplete="username"
             {...register("username")}
             autoFocus
           />
@@ -83,7 +84,7 @@ function Register() {
         </form>
         <p className="text-zinc-300 text-xs">
           ¿Ya tienes una cuenta?
-          <Link className="text-amber-400" to="/login"> Iniciar sesión</Link>
+          <Link className="text-blue-500" to="/login"> Iniciar sesión</Link>
         </p>
       </Card>
     </div>

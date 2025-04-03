@@ -60,8 +60,8 @@ export function RecipesPage() {
   };
 
   return (
-    <div className="flex flex-col items-center p-4">
-      {filteredRecipes.length > 0 && (
+    <div className="flex flex-col items-center min-h-[calc(95vh-100px)]">
+      {recipes.length > 0 && (
         <div className="flex justify-between items-center p-2 bg-zinc-800 rounded-lg shadow-sm mb-4 z-10">
           <div className="flex items-center space-x-4">
             <div className="relative">

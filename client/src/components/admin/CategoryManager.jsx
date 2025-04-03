@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { useCategory } from "../../hooks/useCategory";
-import { Button, Input, Message } from "../ui";
+import { Button, Input, Message, Card } from "../ui";
 
 export const CategoryManager = () => {
   const { categories, setCategories, setTags, getCategories, createCategory, deleteCategory, tags, getTags, createTag, deleteTag, errors } = useCategory();
@@ -73,8 +73,9 @@ export const CategoryManager = () => {
   }, []);
 
   return (
-    <div className="w-[calc(60vh-100px)] p-6 bg-zinc-900 rounded-lg shadow-lg shadow-zinc-950">
-        {errors.map((error, i) => (
+    <div className="h-[calc(95vh-100px)] w-full lg:w-1/2 2xl:w-1/3 min-w-[300px]">
+      <Card>
+      {errors.map((error, i) => (
           <Message message={error} key={i} />
         ))}
       <form onSubmit={handleSubmit(onSubmit)} role="form">
@@ -164,6 +165,7 @@ export const CategoryManager = () => {
           ))
         )}
       </div>
+      </Card>
     </div>
   );
 };

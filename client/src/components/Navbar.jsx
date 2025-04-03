@@ -12,7 +12,7 @@ export function Navbar() {
   };
 
   return (
-    <div className="bg-zinc-900 my-2 mx-4 md:mx-60 flex justify-between min-w-[480px] py-1 px-4 rounded-xl shadow-md transition-transform transform hover:scale-105 hover:shadow-md">
+    <div className="bg-zinc-900 my-2 mx-4 md:mx-60 flex justify-between min-w-[300px] py-1 px-4 rounded-xl shadow-md transition-transform transform hover:scale-105 hover:shadow-md relative z-40">
       <button
         onClick={toggleMenu}
         className="block lg:hidden text-zinc-300 focus:outline-none"
@@ -46,7 +46,7 @@ export function Navbar() {
       <div className="flex gap-x-2 items-center">
         {isAuthenticated ? (
           <>
-            <h3 className="text-zinc-300 text-xs lg:text-xs">Bienvenido <span className="text-amber-400 pl-1">{user.username}</span></h3>
+            <h3 className="text-zinc-300 text-xs lg:text-xs pl-2">Bienvenido <span className="text-amber-400 pl-1">{user.username}</span></h3>
             <ButtonLink to="/add-recipe">Añadir Receta</ButtonLink>
             <Link
               to="/"
@@ -67,7 +67,7 @@ export function Navbar() {
       <div
         className={`${
           isMenuOpen ? "block" : "hidden"
-        } absolute top-16 left-0 right-0 bg-zinc-900 py-2 px-4 rounded-b-lg lg:hidden`}
+        } absolute top-11 left-0 right-0 bg-zinc-900 py-2 px-4 rounded-b-lg lg:hidden z-50`}
       >
         <Link
           to="/"

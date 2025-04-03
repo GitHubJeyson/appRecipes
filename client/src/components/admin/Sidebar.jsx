@@ -13,7 +13,7 @@ export function Sidebar() {
   return (
     <>
     {isAuthenticated && user?.role === 'admin' && (
-    <div className={`fixed ${isOpen ? 'w-48' : 'w-16'} bg-zinc-800 text-zinc-300 text-xs p-2 ml-6 rounded-xl shadow-md z-10 transition-all`}>
+    <div className={`fixed ${isOpen ? 'w-48' : 'w-16'} bg-zinc-800 text-zinc-300 text-xs p-2 ml-6 rounded-xl shadow-md z-20 transition-all`}>
           <button
             onClick={toggleSidebarContent}
             className="absolute top-0 right-0 bg-zinc-700 p-2 rounded-full hover:bg-zinc-600 transition-colors">

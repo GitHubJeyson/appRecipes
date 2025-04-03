@@ -33,7 +33,7 @@ function App() {
               <BrowserRouter>
                 <Navbar />
                 <Sidebar />
-                <main className="flex flex-col items-center min-w-[480px] mx-6 px-6 md:px-14 py-4 bg-zinc-900 rounded-xl shadow-lg">
+                <main className="flex flex-col items-center min-w-[300px] mx-6 px-6 md:px-10 py-4 bg-zinc-900 rounded-xl shadow-lg">
                   <Routes>
                     <Route path="/" element={<HomePage/>}/>
                     <Route path="/login" element={<LoginPage/>}/>

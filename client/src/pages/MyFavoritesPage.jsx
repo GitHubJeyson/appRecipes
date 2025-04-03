@@ -25,7 +25,7 @@ export function MyFavoritesRecipes() {
   }
 
   return (
-    <div className="w-full" role="region" aria-labelledby="favorite-recipe-list">
+    <div className="flex flex-col items-center min-h-[calc(95vh-100px)]" role="region" aria-labelledby="favorite-recipe-list">
       {favorites.length === 0 ? (
         <div className="flex flex-col justify-center items-center p-10 text-center">
           <ImFileEmpty className="text-6xl text-gray-400 mb-4" />
@@ -34,7 +34,7 @@ export function MyFavoritesRecipes() {
           </h1>
         </div>
       ) : (
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {favorites.map((recipe) => (
             <RecipeCard 
             recipe={recipe} 

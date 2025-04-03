@@ -4,7 +4,7 @@ import { getContent, insertContent, updateContent } from '../controllers/content
 
 const router = Router();
 
-router.get('/content', auth, getContent);
+router.get('/content', getContent);
 router.post('/content', auth, insertContent);
 router.put('/content', auth, updateContent);
 
