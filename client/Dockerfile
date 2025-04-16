@@ -10,3 +10,5 @@ RUN npm install --frozen-lockfile
 COPY . .
 
 RUN npm run build
+
+RUN chmod -R 755 dist

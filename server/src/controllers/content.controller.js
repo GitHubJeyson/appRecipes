@@ -3,10 +3,16 @@ import Content from '../models/content.model.js';
 
 export const getContent = async (req, res) => {
   try {
-    const content = await Content.findOne();
+    let content = await Content.findOne();
     if (!content) {
-        return res.status(404).json({ message: 'Contenido no encontrado' });
+      console.log('No se encontró contenido. Insertando contenido por defecto...');
+      content = new Content({
+        title: 'Recetas de Cocina',
+        introduction: 'Descubre miles de recetas caseras, fáciles y rápidas de hacer que deleitarán incluso a los paladares más exigentes. ¡Conviértete en un chef profesional con las mejores recetas de cocina paso a paso!',
+      });
+      await content.save();
     }
+
     res.json(content);
   } catch (error) {
     console.error('Error al obtener el contenido:', error);

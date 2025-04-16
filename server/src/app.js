@@ -26,7 +26,7 @@ app.use("/api", recipesRoutes);
 app.use("/api", commentsRoutes);
 app.use("/api", contentRoutes);
 app.use("/api", categoryRoutes);
-
+/*
 if (process.env.NODE_ENV === "production") {
   const path = await import("path");
   app.use(express.static("../../client/dist"));
@@ -36,5 +36,5 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve("client", "dist", "index.html"));
   });
 }
-
+*/
 export default app;

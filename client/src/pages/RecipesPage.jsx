@@ -78,7 +78,7 @@ export function RecipesPage() {
               </select>
             </div>
 
-            <div className="relative mt-[20px]" ref={tagsContainerRef}>
+            <div className="relative mt-[15px]" ref={tagsContainerRef}>
               <button
                 onClick={toggleTags}
                 className="text-xs text-zinc-400 border border-zinc-600 rounded-md px-4 py-[5px]"

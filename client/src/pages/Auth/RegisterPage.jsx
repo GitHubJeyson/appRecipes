@@ -72,13 +72,13 @@ function Register() {
           )}
 
           {!adminExists && (
-            <>
+            <div className="flex items-center space-x-4 my-4">
               <Label htmlFor="role">Rol:</Label>
-              <select {...register("role")} className="bg-zinc-700 text-zinc-400 px-4 py-2 mb-4 rounded-md">
+              <select {...register("role")} className="bg-zinc-700 text-zinc-400 text-xs px-1 py-2 rounded-md">
                 <option value="user">Usuario</option>
                 <option value="admin">Administrador</option>
               </select>
-            </>
+            </div>
           )}          
           <Button>Enviar</Button>
         </form>

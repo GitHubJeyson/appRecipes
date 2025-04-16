@@ -30,9 +30,9 @@ function RecipeCard({ recipe, showComments = false, showFavorites = false, showD
           <h1 className="text-md font-semibold text-zinc-400">
             {recipe.title}</h1>
         </div>
-        <div className='flex'>
+        <div className='flex items-center space-x-2 mx-2'>
         {isAuthenticated && showDelete && (
-        <div className="flex px-2 items-center">
+        <div>
           <Button onClick={() => deleteRecipe(recipe._id)}>
             <p>Eliminar</p>
           </Button>

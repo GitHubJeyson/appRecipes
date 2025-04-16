@@ -30,10 +30,12 @@ export const register = async (req, res) => {
         role: userSaved.role,
     });
 
+    const isProduction = process.env.NODE_ENV === "production";
+
     res.cookie('token', token, {
-        httpOnly: process.env.NODE_ENV !== "development",
-        secure: true,
-        sameSite: "none",
+      httpOnly: isProduction,
+      secure: isProduction,
+      sameSite: isProduction ? "lax" : "none",
     });
 
     res.json({
@@ -70,10 +72,12 @@ export const login = async (req, res) => {
             role: userFound.role,
         });
 
+        const isProduction = process.env.NODE_ENV === "production";
+
         res.cookie('token', token, {
-            httpOnly: process.env.NODE_ENV !== "development",
-            secure: true,
-            sameSite: "none",
+          httpOnly: isProduction,
+          secure: isProduction,
+          sameSite: isProduction ? "lax" : "none",
         });
 
         res.json({
@@ -115,12 +119,15 @@ export const verifyToken = async (req, res) => {
 //LOGOUT
 export const logout = (req, res) => {
     try {
+        const isProduction = process.env.NODE_ENV === "production";
+
         res.cookie('token', "", {
-            httpOnly: true,
-            secure: true,
-            expires: new Date(0)
+          httpOnly: isProduction,
+          secure: isProduction,
+          sameSite: isProduction ? "lax" : "none",
+          expires: new Date(0),
         });
-        return res.sendStatus(200);
+        return res.status(200).json({ message: "Logout successful" });
     } catch (error) {
         return res.status(500).json({ message: error.message });
     }
